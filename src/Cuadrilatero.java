@@ -1,54 +1,49 @@
-public class Cuadrilatero implements Figura {
-    float L1;
-    float L2;
-    float L3;
-    float L4;
+import java.util.List;
 
-    public Cuadrilatero(float l1, float l2, float l3, float l4) {
-        L1 =l1;
-        L2=l2;
-        L3=l3;
-        L4=l4;
+public class Cuadrilatero extends Figura {
+    private double lado1;
+    private double lado2;
+    private double lado3;
+    private double lado4;
 
+    public Cuadrilatero(List<Punto> puntos, double lado1, double lado2, double lado3, double lado4) {
+        super(puntos);
+        if (puntos.size() != 4) {
+            throw new IllegalArgumentException("El cuadrilátero debe tener 4 puntos");
+        }
+        if (lado1 <= 0 || lado2 <= 0 || lado3 <= 0 || lado4 <= 0) {
+            throw new IllegalArgumentException("Los lados del cuadrilátero deben ser mayores que cero");
+        }
+        this.lado1 = lado1;
+        this.lado2 = lado2;
+        this.lado3 = lado3;
+        this.lado4 = lado4;
     }
 
-
-    public float getL2() {
-        return L2;
+    // Fórmula de Brahmagupta (exacta para rectángulos, cuadrados y cuadriláteros cíclicos)
+    @Override
+    public double calcularArea() {
+        double s = calcularPerimetro() / 2;
+        return Math.sqrt((s - lado1) * (s - lado2) * (s - lado3) * (s - lado4));
     }
 
-    public void setL2(float l2) {
-        L2 = l2;
+    @Override
+    public double calcularPerimetro() {
+        return lado1 + lado2 + lado3 + lado4;
     }
 
-    public float getL1() {
-        return L1;
+    // Suma de las distancias de sus cuatro puntos al centro del plano
+    @Override
+    public double dimensionar() {
+        double suma = 0;
+        for (Punto p : puntos) {
+            suma += Math.sqrt(p.getX() * p.getX() + p.getY() * p.getY());
+        }
+        return suma;
     }
 
-    public void setL1(float l1) {
-        L1 = l1;
-    }
-
-    public float getL3() {
-        return L3;
-    }
-
-    public void setL3(float l3) {
-        L3 = l3;
-    }
-
-    public float getL4() {
-        return L4;
-    }
-
-    public void setL4(float l4) {
-        L4 = l4;
-    }
-    public void calcularArea() {
-        System.out.println("el area del cuadrilatero es: "+ L1*L1);
-    }
-
-    public void calcularPerimetro() {
-        System.out.println("el perimetro del cuadrilatero es: "+ L1+L2+L3+L4);
+    @Override
+    public String getDimensiones() {
+        return "lado1 = " + lado1 + ", lado2 = " + lado2 + ", lado3 = " + lado3 + ", lado4 = " + lado4;
     }
 }
