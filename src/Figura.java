@@ -3,7 +3,7 @@ import java.util.List;
 
 public abstract class Figura {
     public static List<Figura> lista = new ArrayList<>();
-    protected List<Punto> puntos; // Relación Figura <>— 1..* Punto
+    protected List<Punto> puntos;
 
     public Figura(List<Punto> puntos) {
         if (puntos == null || puntos.isEmpty()) {
