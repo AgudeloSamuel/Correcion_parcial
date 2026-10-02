@@ -1,29 +1,37 @@
-public class Circulo implements Figura {
+import java.util.List;
 
+public class Circulo extends Figura {
+    private double radio;
 
-    float radio;
-
-    public Circulo( float radio ) {
-
-        this.radio= radio;
+    public Circulo(Punto centro, double radio) {
+        super(List.of(centro));
+        setRadio(radio);
     }
 
-
-    public float getRadio() {
-        return radio;
-    }
-
-    public void setRadio(float radio) {
+    public void setRadio(double radio) {
+        if (radio <= 0) {
+            throw new IllegalArgumentException("El radio debe ser mayor que cero");
+        }
         this.radio = radio;
     }
 
+    @Override
+    public double calcularArea() {
+        return Math.PI * radio * radio;
+    }
 
     @Override
-    public void calcularArea() {
-        System.out.println("el area del circulo es: "+ 180*(radio*radio));
+    public double calcularPerimetro() {
+        return 2 * Math.PI * radio;
     }
+
     @Override
-    public void calcularPerimetro() {
-        System.out.println("el perimetro del circulo es: "+ 2*180*radio);
+    public double dimensionar() {
+        return calcularArea();
+    }
+
+    @Override
+    public String getDimensiones() {
+        return "radio = " + radio;
     }
 }
