@@ -1,43 +1,41 @@
-public class Pentagono implements Figura {
-    float lado;
-    float a;
-    float Perimetro;
+import java.util.List;
 
-    public Pentagono(float lado, float a, float Perimetro) {
-        this.lado = lado;
-        this.a=a ;
-        this.Perimetro=5*lado;
-    }
+public class Pentagono extends Figura {
+    private double lado;
 
-    public float getLado() {
-        return lado;
-    }
-
-    public void setLado(float lado) {
+    public Pentagono(List<Punto> puntos, double lado) {
+        super(puntos);
+        if (puntos.size() != 5) {
+            throw new IllegalArgumentException("El pentágono debe tener 5 puntos");
+        }
+        if (lado <= 0) {
+            throw new IllegalArgumentException("El lado del pentágono debe ser mayor que cero");
+        }
         this.lado = lado;
     }
 
-    public float getA() {
-        return a;
-    }
-
-    public void setA(float a) {
-        this.a = a;
-    }
-
-    public float getPerimetro() {
-        return Perimetro;
-    }
-
-    public void setPerimetro(float perimetro) {
-        Perimetro = perimetro;
-    }
     @Override
-    public void calcularPerimetro() {
-        System.out.println("el perimetro del Pentagono es: "+ 5*lado);
+    public double calcularArea() {
+        double apotema = lado / (2 * Math.tan(Math.PI / 5));
+        return (calcularPerimetro() * apotema) / 2;
     }
+
     @Override
-    public void calcularArea() {
-        System.out.println("el area del Pentagono es: " + ( Perimetro+ a) / 2);
+    public double calcularPerimetro() {
+        return 5 * lado;
+    }
+
+    @Override
+    public double dimensionar() {
+        double suma = 0;
+        for (Punto p : puntos) {
+            suma += p.getX();
+        }
+        return suma;
+    }
+
+    @Override
+    public String getDimensiones() {
+        return "lado = " + lado;
     }
 }
