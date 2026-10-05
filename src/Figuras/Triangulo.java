@@ -1,3 +1,6 @@
+package Figuras;
+import Modelo.Figura;
+import Modelo.Punto;
 import java.util.List;
 
 public class Triangulo extends Figura {

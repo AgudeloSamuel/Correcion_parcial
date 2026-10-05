@@ -1,3 +1,10 @@
+package Aplicacion;
+import Modelo.Punto;
+import Figuras.Circulo;
+import Figuras.Cuadrilatero;
+import Figuras.Pentagono;
+import Figuras.Triangulo;
+import Modelo.Figura;
 import java.util.List;
 
 public class Main {
@@ -28,7 +35,7 @@ public class Main {
         cuadrilatero.desplazar(2, 2);
         System.out.printf("Dimensionar después: %.2f%n%n", cuadrilatero.dimensionar());
 
-        System.out.println("=== Clase Punto ===");
+        System.out.println("=== Clase Modelo.Punto ===");
         Punto p = new Punto(3, 4);
         p.distancia();
         p.desplazar(1, 1);
