@@ -1,3 +1,5 @@
+package Modelo;
+
 public class Punto {
     private double x;
     private double y;

@@ -1,3 +1,6 @@
+package Figuras;
+import Modelo.Punto;
+import Modelo.Figura;
 import java.util.List;
 
 public class Circulo extends Figura {
