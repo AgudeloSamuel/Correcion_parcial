@@ -1,7 +1,7 @@
 package Modelo;
 
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class Figura {
@@ -13,6 +13,10 @@ public abstract class Figura {
             throw new IllegalArgumentException("La figura debe tener al menos un punto");
         }
         this.puntos = new ArrayList<>(puntos);
+    }
+
+    public List<Punto> getPuntos() {
+        return Collections.unmodifiableList(puntos);
     }
 
     public void desplazar(double x, double y) {
@@ -33,3 +37,4 @@ public abstract class Figura {
 
     public abstract String getDimensiones();
 }
+
