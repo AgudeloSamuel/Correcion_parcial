@@ -81,7 +81,7 @@ public class VentanaPrincipal extends JFrame {
         JScrollPane scrollLista = new JScrollPane(listaFiguras);
         scrollLista.setBorder(new TitledBorder("Figuras"));
 
-        // INFORMACIÓN
+
         txtInformacion = new JTextArea();
         txtInformacion.setEditable(false);
         txtInformacion.setLineWrap(true);
